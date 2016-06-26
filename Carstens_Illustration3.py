@@ -34,8 +34,8 @@ def myTradingSystem(DATE, OPEN, HIGH, LOW, CLOSE, settings, exposure):
         p[:] = 0
         return p, settings
 
-    closeRange = np.ptp(CLOSE[-4:,1])
-    atr = ATR(HIGH, LOW, CLOSE, 4)
+    closeRange = np.ptp(CLOSE[-9:,1]) //changed from 4 days to 9 by hac
+    atr = ATR(HIGH, LOW, CLOSE, 9)
 
     LongRule1 = CLOSE[-1,1] < CLOSE[-2,1] and  closeRange < atr[1]
     ShortRule1 = CLOSE[-1,1] > CLOSE[-2,1] and  closeRange < atr[1]
